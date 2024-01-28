@@ -1,0 +1,132 @@
+<!-- coaches.html -->
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Coaches</title>
+</head>
+
+<body>
+<!-- nav -->
+<div class="text-center">
+    <a href="coaches" ><button class="btn btn-outline-primary">Coach</button></a>
+    <a href="teams" ><button class="btn btn-outline-primary">Team</button></a>
+    <a href="players" ><button class="btn btn-outline-primary">Player</button></a>
+</div>
+
+<!-- add coach -->
+
+<div class="row m-4 border border-dark">
+    <div class="col-3 text-center m-3">
+        <span class="h3">Add Coach</span>
+    </div>
+    <div class="col-7 text-center m-3">
+        <form action="addCoach" method="POST">
+            <div class="form-group row">
+                <label for="firstName" class="col-3 col-form-label">
+                    First Name</label>
+                <div class="col-9">
+                    <input type="text" name="firstName"
+                           id="firstName" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lastName" class="col-3 col-form-label">
+                    Last Name</label>
+                <div class="col-9">
+                    <input type="text" name="lastName"
+                           id="lastName" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="salary" class="col-3 col-form-label">
+                    Salary</label>
+                <div class="col-9">
+                    <input type="number" name="salary"
+                           id="salary" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="wins" class="col-3 col-form-label">
+                    Wins</label>
+                <div class="col-9">
+                    <input type="number" name="wins"
+                           id="wins" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="losses" class="col-3 col-form-label">
+                    Losses</label>
+                <div class="col-9">
+                    <input type="number" name="losses"
+                           id="losses" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="teamID" class="col-3 col-form-label">
+                    Team ID</label>
+                <div class="col-9">
+                    <input type="number" name="teamID"
+                           id="teamID" class="form-control"/>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Add Coach</button>
+        </form>
+    </div>
+</div>
+
+
+<!-- end of add coach -->
+
+<!-- update coach -->
+
+
+
+
+
+<!-- end of update coach -->
+
+<div class="row m-4 border border-dark">
+    <div class="col text-center m-3">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Salary</th>
+                <th>Wins</th>
+                <th>Losses</th>
+                <th>Team ID</th>
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="coach : ${coaches}">
+                <td th:text="${coach.cid}">Coach ID</td>
+                <td th:text='${coach.coachfname}'>First Name</td>
+                <td th:text='${coach.coachlname}'>First Name</td>
+                <td th:text='${coach.csalary}'>Salary</td>
+                <td th:text='${coach.cwins}'>Wins</td>
+                <td th:text='${coach.closses}'>Losses</td>
+                <td th:text='${coach.tid}'>Team ID</td>
+                <td> <a href="#" th:href="@{/deleteCoach(id=${coach.cid})}"> Delete </a></td>
+                <td> <a href="#" th:href="@{/editCoach(id=${coach.cid})}"> Edit </a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Coaches</title>
+</head>
+<body>
+<!-- nav -->
+<div class="text-center">
+    <a href="coaches" ><button class="btn btn-outline-primary">Coach</button></a>
+    <a href="teams" ><button class="btn btn-outline-primary">Team</button></a>
+    <a href="players" ><button class="btn btn-outline-primary">Player</button></a>
+</div>
+
+
+<div class="row m-4 border border-dark">
+    <div class="col-3 text-center m-3">
+        <span class="h3">Edit Coach</span>
+    </div>
+    <div class="col-7 text-center m-3">
+        <form action="editCoach" method="POST">
+            <div class="form-group row">
+                <label for="firstName" class="col-3 col-form-label">
+                    First Name</label>
+                <div class="col-9">
+                    <input type="text" name="firstName"
+                           id="firstName" class="form-control"  th:value="${coach.coachfname}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="lastName" class="col-3 col-form-label">
+                    Last Name</label>
+                <div class="col-9">
+                    <input type="text" name="lastName"
+                           id="lastName" class="form-control" th:value="${coach.coachlname}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="salary" class="col-3 col-form-label">
+                    Salary</label>
+                <div class="col-9">
+                    <input type="number" name="salary"
+                           id="salary" class="form-control" th:value="${coach.csalary}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="wins" class="col-3 col-form-label">
+                    Wins</label>
+                <div class="col-9">
+                    <input type="number" name="wins"
+                           id="wins" class="form-control" th:value="${coach.cwins}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="losses" class="col-3 col-form-label">
+                    Losses</label>
+                <div class="col-9">
+                    <input type="number" name="losses"
+                           id="losses" class="form-control" th:value="${coach.closses}"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="teamID" class="col-3 col-form-label">
+                    Team ID</label>
+                <div class="col-9">
+                    <input type="number" name="teamID"
+                           id="teamID" class="form-control" th:value="${coach.tid}"/>
+                </div>
+            </div>
+            <input type="hidden" name="id" th:value="${coach.cid}"/>
+            <button type="submit" class="btn btn-primary">Update Coach</button>
+        </form>
+    </div>
+</div>
+
+</body>
+</html>

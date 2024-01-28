@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Team Detail</title>
+</head>
+<body>
+<!-- Main Body of Page -->
+<!-- nav -->
+<div class="text-center">
+    <a href="coaches" ><button class="btn btn-outline-primary">Coach</button></a>
+    <a href="teams" ><button class="btn btn-outline-primary">Team</button></a>
+    <a href="players" ><button class="btn btn-outline-primary">Player</button></a>
+</div>
+
+<!-- if deletion failed -->
+<div th:if="${deleteSuccess != null}">
+    <div th:if="${!deleteSuccess}">
+        <p class="alert alert-danger">Unable to delete team: team still has players and/or coaches</p>
+    </div>
+</div>
+
+<div class="row m-4 border border-dark">
+    <div class="col text-left m-3">
+        <table>
+            <!-- general team info row -->
+            <tr>
+                <th th:text="${'ID: ' + team.teamId}" class="pr-3">Team ID</th>
+                <th th:text="${'Name: ' + team.teamName}" class="pr-3">Team Name</th>
+                <th th:text="${'State: ' + team.teamState}" class="pr-3">Team State</th>
+            </tr>
+
+            <!-- no players -->
+            <table th:if="${#lists.isEmpty(team.players)}" class="table table-striped offset-md-1">
+                <tr>
+                    <td>No players for this team</td>
+                </tr>
+            </table>
+
+            <!-- has players -->
+
+            <table th:unless="${#lists.isEmpty(team.players)}"  class="table table-striped offset-md-2">
+                <tr>
+                    <th>Player Id</th>
+                    <th>Player Name</th>
+                </tr>
+                <tr th:each="player : ${team.players}">
+                    <td th:text="${player.pid}">Player Id</td>
+                    <td th:text="${player.fName + ' ' + player.lName}">Player Name</td>
+                </tr>
+            </table>
+
+
+            <!-- no coaches -->
+            <table th:if="${#lists.isEmpty(team.coaches)}" class="table table-striped offset-md-1">
+                <tr>
+                    <td>No coaches for this team</td>
+                </tr>
+            </table>
+
+            <!-- has coaches -->
+            <table th:unless="${#lists.isEmpty(team.coaches)}"  class="table table-striped offset-md-2">
+                <tr>
+                    <th>Coach Id</th>
+                    <th>Coach Name</th>
+                </tr>
+                <tr th:each="coach : ${team.coaches}">
+                    <td th:text="${coach.cid}">Coach Id</td>
+                    <td th:text="${coach.coachfname + ' ' + coach.coachlname}">Coach Name</td>
+                </tr>
+            </table>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>

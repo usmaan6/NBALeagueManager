@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <title>Add Team</title>
+</head>
+<body>
+<!-- nav -->
+<div class="text-center">
+    <a href="coaches" ><button class="btn btn-outline-primary">Coach</button></a>
+    <a href="teams" ><button class="btn btn-outline-primary">Team</button></a>
+    <a href="players" ><button class="btn btn-outline-primary">Player</button></a>
+</div>
+
+<!--add form-->
+<!-- display any errors -->
+<div th:if="${errors != null}">
+    <div th:each="error: ${errors}">
+        <p class="alert alert-danger" th:text="${error}">Error</p>
+    </div>
+</div>
+
+
+<div class="row m-4 border border-dark">
+    <div class="col-3 text-center m-3">
+        <span class="h3">Add Team</span>
+    </div>
+    <div class="col-7 text-center m-3">
+        <form action="addTeam" method="POST">
+            <div class="form-group row">
+                <label for="teamName" class="col-3 col-form-label">
+                    Name</label>
+                <div class="col-9">
+                    <input type="text" name="teamName"
+                           id="teamName" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="teamState" class="col-3 col-form-label">
+                    State</label>
+                <div class="col-9">
+                    <input type="text" name="teamState"
+                           id="teamState" class="form-control"/>
+                </div>
+            </div>
+
+            <!-- wins and losses -->
+            <div class="form-group row">
+                <label for="wins" class="col-3 col-form-label">
+                    Wins</label>
+                <div class="col-9">
+                    <input type="number" name="wins"
+                           id="wins" class="form-control"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label for="losses" class="col-3 col-form-label">
+                    Losses</label>
+                <div class="col-9">
+                    <input type="number" name="losses"
+                           id="losses" class="form-control"/>
+                </div>
+            </div>
+
+            <!-- payroll: will be a big decimal, so read it as string -->
+            <div class="form-group row">
+                <label for="teamPayrollStr" class="col-3 col-form-label">
+                    Payroll</label>
+                <div class="col-9">
+                    <input type="text" name="teamPayrollStr"
+                           id="teamPayrollStr" class="form-control"/>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Add Team</button>
+        </form>
+    </div>
+</div>
+
+
+
+
+</body>
+</html>
